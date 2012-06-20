@@ -1,6 +1,12 @@
 class GamesController < ApplicationController
+  respond_to :json, :html
+
   def show
     @game = Game.find(params[:id])
+  end
+
+  def current_game
+    respond_with(Game.current_game)
   end
 
   def create

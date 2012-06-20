@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Player Requests" do
+describe "Player Requests", js: true do
   describe '/' do
     let!(:game) { FactoryGirl.create(:game) }
     context "There is currently a game going on" do
@@ -13,7 +13,7 @@ describe "Player Requests" do
       it "says that there is no game occuring" do
         game.finish
         visit "/"
-        page.should have_content "no game"
+        page.should have_content "No Current Game"
       end
     end
   end

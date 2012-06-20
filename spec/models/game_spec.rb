@@ -22,15 +22,35 @@ describe Game do
     end
   end
 
-  describe "#past_games" do
-    let!(:games) { FactoryGirl.create_list(:past_game, 10) }
-    it "returns all past games" do
-      Game.past_games.should == games
+  describe "#pending" do
+    let!(:games) { FactoryGirl.create_list(:pending_game, 10) }
+    it "returns all pending games" do
+      Game.pending.should == games
     end
 
     it "does not return a current game" do
       game = FactoryGirl.create(:active_game)
-      Game.past_games.should_not include(game)
+      Game.pending.should_not include(game)
+    end
+  end
+
+  describe "#past_games" do
+    let!(:games) { FactoryGirl.create_list(:past_game, 10) }
+    it "returns all past games" do
+      Game.past.should == games
+    end
+
+    it "does not return a current game" do
+      game = FactoryGirl.create(:active_game)
+      Game.past.should_not include(game)
+    end
+  end
+
+  describe ".start" do
+    let!(:game) { FactoryGirl.create(:active_game) }
+    it "sets the game's status to finished" do
+      game.start
+      game.status.should == "active"
     end
   end
 
@@ -47,7 +67,7 @@ describe Game do
     it "returns the current game object" do
       game.finish
       game2 = FactoryGirl.create(:active_game)
-      Game.current_game.should == game2
+      Game.current.should == game2
     end
   end
 end

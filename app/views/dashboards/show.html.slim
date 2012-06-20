@@ -1,9 +1,27 @@
 - if @current_game
   = @current_game.name
+  = link_to "End Game", finish_game_path(@current_game), class: "btn btn-primary"
 - else
   div#new_game
     = simple_form_for @new_game do |f|
       = f.input :name
       = f.submit
-  - @past_games.each do |game|
-    = game.name
+
+  table
+    th Pending Games
+    - @pending_games.each do |game|
+      tr
+        td
+          = game.name
+        td
+          = game.status
+        td
+          = link_to "Start Game", start_game_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_start"
+  table
+    th Past Games
+    - @past_games.each do |game|
+      tr
+        td
+          = game.name
+        td
+          = game.status

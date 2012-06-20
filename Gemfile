@@ -10,6 +10,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem "twitter-bootstrap-rails"
 end
 
 group :development, :test do
@@ -18,8 +19,10 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'guard'
   gem 'capybara'
+  gem "capybara-webkit"
   gem 'factory_girl_rails'
-  gem "launchy"
+  gem 'launchy'
+  gem 'therubyracer'
 end
 
 group :production do

@@ -56,4 +56,32 @@ describe "Dashboard Requests" do
       end
     end
   end
+
+  describe "starting a game" do
+    let!(:game) { FactoryGirl.create(:pending_game) }
+    before(:each) do
+      visit "/dashboard"
+      click_link "game_#{game.id}_start"
+    end
+    it "changes the game's status to active" do
+      Game.find(game.id).status.should == "active"
+    end
+    it "redirects to the dashboard" do
+      current_path.should == dashboard_path
+    end
+  end
+
+  describe "finishing a game" do
+    let!(:game) { FactoryGirl.create(:active_game) }
+    before(:each) do 
+      visit "/dashboard"
+      click_link "End Game"
+    end
+    it "changes the game's status to finished" do
+      Game.find(game.id).status.should == "finished"
+    end
+    it "redirects to the dashboard" do
+      current_path.should == dashboard_path
+    end
+  end
 end

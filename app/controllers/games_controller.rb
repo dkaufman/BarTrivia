@@ -6,15 +6,24 @@ class GamesController < ApplicationController
   end
 
   def current_game
-    respond_with(Game.current_game)
+    respond_with(Game.current)
   end
 
   def create
     game = Game.new(params[:game])
-    if game.save
-      redirect_to game_path(game)
-    else
-      redirect_to dashboard_path
-    end
+    game.save
+    redirect_to dashboard_path
+  end
+
+  def start
+    game = Game.find(params[:id])
+    game.start
+    redirect_to dashboard_path
+  end
+
+  def finish
+    game = Game.find(params[:id])
+    game.finish
+    redirect_to dashboard_path
   end
 end

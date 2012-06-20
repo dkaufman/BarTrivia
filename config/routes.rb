@@ -1,5 +1,10 @@
 LsTrivia::Application.routes.draw do
-  resources :games
+  resources :games do
+    member do
+      get 'start'
+      get 'finish'
+    end
+  end
   resource :dashboard
 
   match "/current_game" => "games#current_game"

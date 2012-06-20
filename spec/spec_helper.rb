@@ -10,6 +10,7 @@ require 'database_cleaner'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -18,6 +19,7 @@ RSpec.configure do |config|
   # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+  Capybara.javascript_driver = :webkit
   
   config.use_transactional_fixtures = false
 

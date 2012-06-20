@@ -1,0 +1,9 @@
+- if @current_game
+  = @current_game.name
+- else
+  div#new_game
+    = simple_form_for @new_game do |f|
+      = f.input :name
+      = f.submit
+  - @past_games.each do |game|
+    = game.name

@@ -12,6 +12,11 @@ class Game < ActiveRecord::Base
     Game.find_by_status("active")
   end
 
+  def start
+    self.status = "active"
+    save
+  end
+
   def finish
     self.status = "finished"
     save
@@ -20,6 +25,8 @@ class Game < ActiveRecord::Base
   # Validations
 
   def only_one_active_game
-    errors[:base] << "There is already an active game" if Game.find_by_status("active")
+    unless self == Game.current_game
+      errors[:base] << "There is already an active game" if Game.find_by_status("active")
+    end
   end
 end

@@ -18,7 +18,7 @@ describe "Dashboard Requests" do
 
     context "there is an active game" do
       let!(:past_game) { FactoryGirl.create(:past_game) }
-      let!(:game) { FactoryGirl.create(:game) }
+      let!(:game) { FactoryGirl.create(:active_game) }
       before(:each) { visit "/dashboard" }
 
       it "shows the current games name" do
@@ -34,17 +34,17 @@ describe "Dashboard Requests" do
   describe "creating a new game" do
     before(:each) { visit "/dashboard" }
     context "with a valid name" do
-      it "creates a new room" do
+      it "creates a new game" do
         fill_in :game_name, with: "Quick Game"
         click_button "Create Game"
         game = Game.last
         game.name.should == "Quick Game"
-        game.status.should == "active"
+        game.status.should == "pending"
       end
     end
     
     context "without a valid name" do
-      it "does not create a room" do
+      it "does not create a game" do
         fill_in :game_name, with: "abc"
         expect { click_button "Create Game" }.to change { Game.count }.by(0)
       end

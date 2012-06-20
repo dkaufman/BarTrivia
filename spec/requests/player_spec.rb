@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Player Requests", js: true do
   describe '/' do
-    let!(:game) { FactoryGirl.create(:game) }
+    let!(:game) { FactoryGirl.create(:active_game) }
     context "There is currently a game going on" do
       it "shows the current game's name" do
         visit "/"

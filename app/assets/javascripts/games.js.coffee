@@ -6,4 +6,4 @@ $.getJSON "/current_game", (data) ->
   if data
     $('#game').append Mustache.to_html($('#game_template').html(), data)
   else
-    $('#game').append("No Current Game")
+    $('#game').append Mustache.to_html($('#no_game_template').html())

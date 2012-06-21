@@ -1,4 +1,4 @@
-class PendingGamesController < ApplicationController
+class Api::PendingGamesController < ApplicationController
   respond_to :json
 
   def index

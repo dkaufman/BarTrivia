@@ -1,4 +1,4 @@
-class PastGamesController < ApplicationController
+class Api::PastGamesController < ApplicationController
   respond_to :json, :html
 
   def index

@@ -70,4 +70,12 @@ describe Game do
       Game.current.should == game2
     end
   end
+
+  describe ".question_count" do
+    let!(:game) { FactoryGirl.create(:pending_game) }
+    let!(:questions) { FactoryGirl.create_list(:question, 3, game_id: game.id) }
+    it "returns the number of questions associated with the game" do
+      game.question_count.should == questions.count
+    end
+  end
 end

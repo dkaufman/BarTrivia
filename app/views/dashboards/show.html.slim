@@ -15,8 +15,12 @@
           = game.name
         td
           = game.status
+        td id="#{dom_id(game)}_question_count"
+          = game.question_count
         td
           = link_to "Start Game", start_game_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_start"
+        td
+          = link_to "Add Question", new_game_question_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_add_question"
   table
     th Past Games
     - @past_games.each do |game|
@@ -25,3 +29,5 @@
           = game.name
         td
           = game.status
+        td id="game_#{dom_id(game)}_question_count"
+          = game.question_count

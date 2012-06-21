@@ -84,4 +84,39 @@ describe "Dashboard Requests" do
       current_path.should == dashboard_path
     end
   end
+
+  describe "adding questions to a game" do
+    let!(:game) { FactoryGirl.create(:pending_game) }
+    before(:each) do
+      visit "/dashboard"
+      click_link "game_#{game.id}_add_question"
+    end
+
+    context "with valid information" do
+      before(:each) do
+        fill_in "Category", with: "Names"
+        fill_in "Question", with: "What is your name?"
+        fill_in "Solution", with: "Dan"
+      end
+      it "creates a new question for that game" do
+        expect { click_button "Create Question" }.to change { game.questions.count }.by(1)
+      end
+
+      it "increases the question count next to the game" do
+        click_button "Create Question"
+        within("#game_#{game.id}_question_count") do
+          page.should have_content("1")
+        end
+      end
+    end
+
+    context "with invalid information" do
+      it "does not create a question" do
+        fill_in "Category", with: ""
+        fill_in "Question", with: ""
+        fill_in "Solution", with: ""
+        expect { click_button "Create Question" }.to change { Question.count }.by(0)
+      end
+    end
+  end
 end

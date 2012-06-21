@@ -4,6 +4,7 @@ LsTrivia::Application.routes.draw do
       get 'start'
       get 'finish'
     end
+    resources :questions
   end
   resource :dashboard
 

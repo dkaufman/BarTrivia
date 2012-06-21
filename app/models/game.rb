@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
   attr_accessible :name
+  has_many :questions
 
   validates :name, presence: true, length: { in: 5..100 }
   validate :only_one_active_game, on: :create
@@ -24,6 +25,10 @@ class Game < ActiveRecord::Base
   def finish
     self.status = "finished"
     save
+  end
+
+  def question_count
+    questions.count
   end
 
   # Validations

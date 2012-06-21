@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$.getJSON "/game", (game) ->
+$.getJSON "/api/game", (game) ->
   if game
     $('#game').append Mustache.to_html($('#game_template').html(), game)
   else

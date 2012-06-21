@@ -38,18 +38,18 @@ describe "Dashboard Requests" do
         game.status.should == "pending"
       end
     end
-    
+
     context "without a valid name" do
       it "does not create a game" do
         fill_in :game_name, with: "abc"
         expect { click_button "Create Game" }.to change { Game.count }.by(0)
       end
 
-      it "returns the user to the same dashboard" do
-        pending
+      it "displays an error on the form" do
         fill_in 'Name', with: "abc"
         click_button "Create Game"
         page.should have_selector("#new_game")
+        page.should have_content("too short")
       end
     end
   end
@@ -108,12 +108,12 @@ describe "Dashboard Requests" do
     end
 
     context "with invalid information" do
-      it "does not create a question" do
-        pending
+      it "raises an error on the form" do
         fill_in "Category", with: ""
         fill_in "Question", with: ""
         fill_in "Solution", with: ""
-        expect { click_button "Create Question" }.to change { Question.count }.by(0)
+        click_button "Create Question"
+        page.should have_content "can't be blank"
       end
     end
   end

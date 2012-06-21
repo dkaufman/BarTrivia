@@ -1,4 +1,8 @@
 LsTrivia::Application.routes.draw do
+  namespace :api do
+    resource :game
+  end
+
   resource :game do
     member do
       get 'start'
@@ -6,16 +10,18 @@ LsTrivia::Application.routes.draw do
     end
     resources :questions, :only => [:index, :show]
   end
+
+  match "/current_game" => "games#current_game"
+
   resources :pending_games do
     member do
       get 'start'
     end
     resources :questions
   end
+
   resources :past_games
   resource :dashboard
-
-  match "/current_game" => "games#current_game"
 
   root :to => 'pages#home'
 end

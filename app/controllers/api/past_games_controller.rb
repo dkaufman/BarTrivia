@@ -4,7 +4,6 @@ class PastGamesController < ApplicationController
   def index
     respond_with(Game.past)
   end
-
 end
 
 

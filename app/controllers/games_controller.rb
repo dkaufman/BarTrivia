@@ -1,19 +1,13 @@
 class GamesController < ApplicationController
-  respond_to :json, :html
-
-  def show
-    respond_with(Game.current)
-  end
-
   def create
     game = Game.new(params[:game])
 
     if game.save
       redirect_to dashboard_path
     else
+      @past_games = Game.past
+      @pending_games = Game.pending
       @new_game = game
-      @pending_games = []
-      @past_games = []
       render :template => "dashboards/show"
     end
   end

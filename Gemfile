@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'slim'
 gem 'simple_form'
 gem 'mustache'
+gem 'therubyracer'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -22,10 +23,8 @@ group :development, :test do
   gem "capybara-webkit"
   gem 'factory_girl_rails'
   gem 'launchy'
-  gem 'therubyracer'
 end
 
 group :production do
   gem 'pg'
-  gem 'therubyracer'
 end

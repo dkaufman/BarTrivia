@@ -2,27 +2,24 @@ class GamesController < ApplicationController
   respond_to :json, :html
 
   def show
-    @game = Game.find(params[:id])
-  end
-
-  def current_game
     respond_with(Game.current)
   end
 
   def create
     game = Game.new(params[:game])
-    game.save
-    redirect_to dashboard_path
-  end
 
-  def start
-    game = Game.find(params[:id])
-    game.start
-    redirect_to dashboard_path
+    if game.save
+      redirect_to dashboard_path
+    else
+      @new_game = game
+      @pending_games = []
+      @past_games = []
+      render :template => "dashboards/show"
+    end
   end
 
   def finish
-    game = Game.find(params[:id])
+    game = Game.current
     game.finish
     redirect_to dashboard_path
   end

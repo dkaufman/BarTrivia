@@ -1,4 +1,4 @@
-= simple_form_for [@game, @question] do |f|
+= simple_form_for [:pending, @game, @question] do |f|
   = f.input :category
   = f.input :body, label: "Question"
   = f.input :solution

@@ -3,7 +3,7 @@ class Game < ActiveRecord::Base
   has_many :questions
 
   validates :name, presence: true, length: { in: 5..100 }
-  validate :only_one_active_game, on: :create
+  validate :only_one_active_game
 
   def self.past
     where(status: "finished")
@@ -34,8 +34,10 @@ class Game < ActiveRecord::Base
   # Validations
 
   def only_one_active_game
-    unless self == Game.current
-      errors[:base] << "There is already an active game" if Game.find_by_status("active")
+    return if self == Game.current
+
+    if Game.find_by_status("active")
+      errors[:base] << "There is already an active game"
     end
   end
 end

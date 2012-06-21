@@ -3,7 +3,7 @@
   = link_to "End Game", finish_game_path(@current_game), class: "btn btn-primary"
 - else
   div#new_game
-    = simple_form_for @new_game do |f|
+    = simple_form_for @new_game, :url => game_path do |f|
       = f.input :name
       = f.submit
 
@@ -18,9 +18,9 @@
         td id="#{dom_id(game)}_question_count"
           = game.question_count
         td
-          = link_to "Start Game", start_game_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_start"
+          = link_to "Start Game", start_pending_game_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_start"
         td
-          = link_to "Add Question", new_game_question_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_add_question"
+          = link_to "Add Question", new_pending_game_question_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_add_question"
   table
     th Past Games
     - @past_games.each do |game|

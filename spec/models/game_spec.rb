@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Game do
   describe "#create" do
     it "should exist with a name and state" do
-      game = Game.create(name: "New Game")
+      game = Game.new(name: "New Game")
       game.name.should == "New Game"
     end
 
@@ -12,7 +12,7 @@ describe Game do
     end
 
     it "should default the state to pending" do
-      game = Game.create(name: "New Game")
+      game = Game.new(name: "New Game")
       game.status.should == "pending"
     end
 

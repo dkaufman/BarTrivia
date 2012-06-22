@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<%= javascript_tag do %>
+  window.pusherKey = "<%= j ENV['PUSHER_KEY'] %>";
+<% end %>
+
 <%= yield %>
 
 </body>

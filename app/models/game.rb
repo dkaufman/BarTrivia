@@ -26,6 +26,7 @@ class Game < ActiveRecord::Base
   def finish
     self.status = "finished"
     save
+    Waitress::announce_game_end
   end
 
   def question_count

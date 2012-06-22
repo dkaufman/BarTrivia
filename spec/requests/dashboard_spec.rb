@@ -58,6 +58,7 @@ describe "Dashboard Requests" do
     let!(:game) { FactoryGirl.create(:pending_game) }
     before(:each) do
       visit "/dashboard"
+      Waitress.stub(:announce_new_game)
       click_link "game_#{game.id}_start"
     end
     it "changes the game's status to active" do

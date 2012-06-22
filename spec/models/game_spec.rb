@@ -49,8 +49,14 @@ describe Game do
   describe ".start" do
     let!(:game) { FactoryGirl.create(:active_game) }
     it "sets the game's status to finished" do
+      Waitress.stub(:announce_new_game)
       game.start
       game.status.should == "active"
+    end
+
+    it "announces the new game through Waitress" do
+      Waitress.should_receive(:announce_new_game)
+      game.start
     end
   end
 
@@ -59,6 +65,11 @@ describe Game do
     it "sets the game's status to finished" do
       game.finish
       game.status.should == "finished"
+    end
+
+    it "announces the ending of the game through Waitress" do
+      Waitress.should_receive(:announce_game_end)
+      game.finish
     end
   end
 

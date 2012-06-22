@@ -13,11 +13,16 @@ class LSTriviaGame
     pusher = new Pusher(pusherKey)
     channel = pusher.subscribe('ls_trivia')
     channel.bind 'new_game', @show_game
+    channel.bind 'game_end', @no_current_game
 
   show_game: (data) ->
     $.getJSON "/api/game", (game) ->
       $('#game').empty()
       $('#game').append Mustache.to_html($('#game_template').html(), game)
+
+  no_current_game: (data) ->
+    $('#game').empty()
+    $('#game').append Mustache.to_html($('#no_game_template').html())
 
 $ ->
   new LSTriviaGame

@@ -20,7 +20,7 @@ class Game < ActiveRecord::Base
   def start
     self.status = "active"
     save
-    Waitress.announce_new_game
+    Waitress::announce_new_game
   end
 
   def finish

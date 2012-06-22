@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/dkaufman/Waitress.git
+  revision: 605a5572003aa6c3a950c56b0cd5befcd5090709
+  specs:
+    waitress (0.0.1)
+      pusher
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -208,3 +215,4 @@ DEPENDENCIES
   therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  waitress!

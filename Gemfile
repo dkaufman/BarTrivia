@@ -7,6 +7,7 @@ gem 'simple_form'
 gem 'mustache'
 gem 'pusher'
 gem 'therubyracer'
+gem 'waitress', git: "git://github.com/dkaufman/Waitress.git"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

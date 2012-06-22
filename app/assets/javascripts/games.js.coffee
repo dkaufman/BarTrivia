@@ -15,6 +15,7 @@ class LSTriviaGame
     channel.bind 'new_game', @show_game
 
   show_game: (data) ->
+    alert("BOOM")
     $.getJSON "/api/game", (game) ->
       $('#game').empty()
       $('#game').append Mustache.to_html($('#game_template').html(), game)

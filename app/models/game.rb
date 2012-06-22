@@ -20,6 +20,7 @@ class Game < ActiveRecord::Base
   def start
     self.status = "active"
     save
+    Pusher['ls_trivia'].trigger('new_game', { :greeting => "Hello" })
   end
 
   def finish

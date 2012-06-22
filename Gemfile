@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'slim'
 gem 'simple_form'
 gem 'mustache'
+gem 'pusher'
 gem 'therubyracer'
 
 group :assets do

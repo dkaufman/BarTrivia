@@ -46,6 +46,13 @@ describe Game do
     end
   end
 
+  describe "#current_cookie_key" do
+    it "returns a symbolized version of the current_game dom_id" do
+      game = FactoryGirl.create(:active_game)
+      Game.current_cookie_key.should == "game_#{game.id}".to_sym
+    end
+  end
+
   describe ".start" do
     let!(:game) { FactoryGirl.create(:active_game) }
     it "sets the game's status to finished" do

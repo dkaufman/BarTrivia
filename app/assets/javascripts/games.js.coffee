@@ -4,12 +4,6 @@
 
 class LSTriviaGame
   constructor: ->
-    $.getJSON "/api/game", (game) ->
-      if game
-        $('#game').append Mustache.to_html($('#game_template').html(), game)
-      else
-        $('#game').append Mustache.to_html($('#no_game_template').html())
-
     pusher = new Pusher(pusherKey)
     channel = pusher.subscribe('ls_trivia')
     channel.bind 'new_game', @show_game
@@ -18,11 +12,26 @@ class LSTriviaGame
   show_game: (data) ->
     $.getJSON "/api/game", (game) ->
       $('#game').empty()
-      $('#game').append Mustache.to_html($('#game_template').html(), game)
+      $('#game').append Mustache.to_html($('#waiting_template').html(), game)
 
-  no_current_game: (data) ->
+  no_current_game: (data) =>
     $('#game').empty()
     $('#game').append Mustache.to_html($('#no_game_template').html())
 
+  new_team: (data) ->
+    $.getJSON "/api/game", (game) ->
+      $('#game').empty()
+      $('#game').append Mustache.to_html($('#new_team_template').html(), game)
+
 $ ->
-  new LSTriviaGame
+  screen = new LSTriviaGame
+  $.getJSON "/api/game", (game) ->
+    if game
+      $.getJSON "/api/team", (team) ->
+        console.log(team)
+        if team
+          screen.show_game()
+        else
+          screen.new_team()
+    else
+      screen.no_current_game()

@@ -1,13 +1,16 @@
 LsTrivia::Application.routes.draw do
   namespace :api do
     resource :game
+    resource :team
   end
+
 
   resource :game do
     member do
       get 'start'
       get 'finish'
     end
+    resource :teams
     resources :questions, :only => [:index, :show]
   end
 

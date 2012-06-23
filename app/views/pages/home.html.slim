@@ -1,8 +1,24 @@
 div#game
 
-script#game_template type="text/html"
-  h1
-    | {{name}}
+script#waiting_template type="text/html"
+  div#waiting
+    h1
+      | {{name}}
+    h2
+      | Waiting for next question
 
 script#no_game_template type="text/html"
-  h1 No Current Game
+  div#no_game
+    h1 No Current Game
+
+script#new_team_template type="type/html"
+  div#new_team_form
+    | Test
+    = simple_form_for [:game, @team] do |f|
+      = f.input :name
+      = f.submit
+    /*form action="/game/teams.#{@team.id}" id="new_team" method="post"*/
+    /*  label*/
+    /*    |Name*/
+    /*  input id="team_name" name="team[name]"*/
+    /*  input name="commit" type="submit" value="Create Team"*/

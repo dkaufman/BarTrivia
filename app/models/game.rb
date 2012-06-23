@@ -1,6 +1,7 @@
 class Game < ActiveRecord::Base
   attr_accessible :name
   has_many :questions
+  has_many :teams
 
   validates :name, presence: true, length: { in: 5..100 }
   validate :only_one_active_game
@@ -15,6 +16,10 @@ class Game < ActiveRecord::Base
 
   def self.current
     Game.find_by_status("active")
+  end
+
+  def self.current_cookie_key
+    "game_#{current.id}".to_sym
   end
 
   def start

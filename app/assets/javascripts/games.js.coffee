@@ -6,8 +6,15 @@ class LSTriviaGame
   constructor: ->
     pusher = new Pusher(pusherKey)
     channel = pusher.subscribe('ls_trivia')
-    channel.bind 'new_game', @show_game
+    channel.bind 'new_game', @show_game_if_team
     channel.bind 'game_end', @no_current_game
+
+  show_game_if_team: (data) =>
+    $.getJSON "/api/team", (team) =>
+      if team
+        @show_game()
+      else
+        @new_team()
 
   show_game: (data) ->
     $.getJSON "/api/game", (game) ->
@@ -28,7 +35,6 @@ $ ->
   $.getJSON "/api/game", (game) ->
     if game
       $.getJSON "/api/team", (team) ->
-        console.log(team)
         if team
           screen.show_game()
         else

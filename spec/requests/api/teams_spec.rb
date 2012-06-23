@@ -8,7 +8,7 @@ describe "Teams API" do
       team = game.teams.create(name: "New Team")
       controller.stub(:current_team).and_return(team)
       get '/api/team.json'
-      pending
+      pending "Can I stub application controller method?"
     end
   end
 end

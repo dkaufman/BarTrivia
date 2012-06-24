@@ -33,4 +33,20 @@ describe Question do
       Question.ask_next.asked.should == true
     end
   end
+
+  describe "#last?" do
+    context "there are no unasked questions for that game" do
+      let!(:game) { FactoryGirl.create(:active_game) }
+      it "returns true" do
+        Question.last?.should be_true
+      end
+    end
+
+    context "there are unasked questions for that game" do
+      let!(:game) { FactoryGirl.create(:active_game_with_questions) }
+      it "returns false" do
+        Question.last?.should be_false
+      end
+    end
+  end
 end

@@ -1,11 +1,18 @@
 = @current_game.name
-= link_to "Ask Next Question", next_question_path, id: "next_question", class: "btn btn-secondary"
+= link_to "Ask Next Question", "#", id: "next_question", class: "btn btn-secondary"
+= link_to "Time's Up", "#", id: "times_up", class: "btn btn-secondary"
 = link_to "End Game", finish_game_path(@current_game), class: "btn btn-primary"
 
 - @current_game.questions.each do |question|
   = question.category
 
+div#questions
+
 script#ask_question_template type="text/html"
   div#ask_question
     h1
       | {{body}}
+script#show_solution_template type="text/html"
+  div#show_solution
+    h1
+      | {{solution}}

@@ -13,8 +13,11 @@ class Question < ActiveRecord::Base
     return question
   end
 
+  def self.last?
+    Game.current.questions.select{ |question| !question.already_asked? }.empty?
+  end
+
   def already_asked?
     asked == true
   end
-
 end

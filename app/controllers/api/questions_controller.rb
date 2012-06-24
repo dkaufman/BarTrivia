@@ -4,4 +4,8 @@ class Api::QuestionsController < ApplicationController
   def show
     respond_with(Question.ask_next)
   end
+
+  def last
+    respond_with(Question.last?)
+  end
 end

@@ -136,12 +136,23 @@ describe "In-Game View", js: true do
     end
 
     it "reveals the next question" do
-      pending "Doesn't seem to be making JS Api call"
+      # pending "Doesn't seem to be making JS Api call"
       page.should have_content game.questions.first.body
     end
 
-    it "hides the 'Ask Next Question' button" do
-      page.should_not have_selector "#next_question", visible: true
+    it "does not show the answer" do
+      page.should_not have_content game.questions.first.solution
+    end
+  end
+
+  describe "clicking 'Times Up'" do
+    before(:each) do
+      click_link "next_question"
+      click_link "times_up"
+    end
+
+    it "shows the answer to the question" do
+      page.should have_content game.questions.first.solution
     end
   end
 end

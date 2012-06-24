@@ -11,8 +11,12 @@ describe "Player Requests", js: true do
         end
       end
       context "the player has already created a team name" do
+        before(:each) do
+          visit "/"
+          fill_in "team_name", with: "Cool Kids"
+          click_button "Create Team"
+        end
         it "shows the waiting for next question screen" do
-          pending "Can I stub application controller?"
           visit "/"
           page.should have_selector "#waiting"
           page.should have_content game.name
@@ -37,14 +41,23 @@ describe "Player Requests", js: true do
   end
 
   describe 'creating a team name' do
+    let!(:game) { FactoryGirl.create(:active_game) }
     context "with a valid team name" do
-      let!(:game) { FactoryGirl.create(:active_game) }
       it "shows the waiting for next question screen" do
-        pending "Passes in isolation. Why?"
         visit "/"
         fill_in "team_name", with: "Cool Kids"
         click_button "Create Team"
         page.should have_selector "#waiting"
+      end
+    end
+    context "with an invalid team name" do
+      let!(:game) { FactoryGirl.create(:active_game) }
+      it "returns to the form with an error" do
+        visit "/"
+        fill_in "team_name", with: ""
+        click_button "Create Team"
+        page.should have_selector "#new_team_form"
+        page.should have_content "can't be blank"
       end
     end
   end

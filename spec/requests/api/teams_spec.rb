@@ -1,14 +1,18 @@
 require 'spec_helper'
+require "rack/test"
 
 describe "Teams API" do
-  describe "/api/team" do
+  describe "/api/team", js: true do
     let!(:game) { FactoryGirl.create(:active_game) }
-    let!(:controller) { mock(ApplicationController) }
+    before(:each) do
+      visit "/"
+      fill_in "team_name", with: "Cool Kids"
+      click_button "Create Team"
+    end
     it "responds with the current team" do
-      team = game.teams.create(name: "New Team")
-      controller.stub(:current_team).and_return(team)
+      pending "Not tracking cookies"
       get '/api/team.json'
-      pending "Can I stub application controller method?"
+      raise response.body.inspect
     end
   end
 end

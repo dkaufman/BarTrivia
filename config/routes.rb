@@ -2,6 +2,7 @@ LsTrivia::Application.routes.draw do
   namespace :api do
     resource :game
     resource :team
+    resource :question
   end
 
 
@@ -11,10 +12,15 @@ LsTrivia::Application.routes.draw do
       get 'finish'
     end
     resource :teams
-    resources :questions, :only => [:index, :show]
+    resources :questions, :only => [:index, :show] do
+      collection do
+        get 'next'
+      end
+    end
   end
 
-  match "/current_game" => "games#current_game"
+  match "current_game" => "games#current_game", as: :current_game
+  match "next_question" => "questions#next", as: :next_question
 
   resources :pending_games do
     member do

@@ -15,4 +15,4 @@
 //= require twitter/bootstrap
 //= require mustache
 //= require pusher.min
-//= require games
+//= require backend

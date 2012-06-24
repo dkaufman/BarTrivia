@@ -119,3 +119,29 @@ describe "Dashboard Requests" do
     end
   end
 end
+
+describe "In-Game View", js: true do
+  let!(:game) { FactoryGirl.create(:active_game_with_questions) }
+  before(:each) { visit "/dashboard" }
+
+  it "shows a list of all of the game's question's categories" do
+    game.questions.each do |question|
+      page.should have_content question.category
+    end
+  end
+
+  describe "clicking 'Ask Next Question'" do
+    before(:each) do
+      click_link "next_question"
+    end
+
+    it "reveals the next question" do
+      pending "Doesn't seem to be making JS Api call"
+      page.should have_content game.questions.first.body
+    end
+
+    it "hides the 'Ask Next Question' button" do
+      page.should_not have_selector "#next_question", visible: true
+    end
+  end
+end

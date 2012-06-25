@@ -23,11 +23,11 @@ group :development, :test do
   gem 'guard'
   gem 'capybara'
   gem "capybara-webkit"
-  gem 'factory_girl_rails'
   gem 'launchy'
   gem "rack-test", require: "rack/test"
   gem "simplecov"
 end
+gem 'factory_girl_rails'
 
 group :production do
   gem 'pg'

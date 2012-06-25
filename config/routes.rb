@@ -8,6 +8,7 @@ LsTrivia::Application.routes.draw do
         get 'current'
         post 'times_up'
       end
+      resources :responses
     end
   end
 
@@ -17,7 +18,7 @@ LsTrivia::Application.routes.draw do
       get 'start'
       get 'finish'
     end
-    resource :teams
+    # resource :teams
     resources :questions, :only => [:index, :show]
   end
 

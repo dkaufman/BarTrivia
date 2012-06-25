@@ -1,9 +1,10 @@
 class Team < ActiveRecord::Base
   attr_accessible :name
   belongs_to :game
+  has_many :responses
 
   before_validation :create_token, on: :create
-  validates :name, presence: true, length: { in: 5..100 }
+  validates :name, presence: true
   validates_presence_of :name, :game_id, :token
 
   protected

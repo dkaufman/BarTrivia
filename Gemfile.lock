@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dkaufman/Waitress.git
-  revision: 0e517cc4c312b10f1b1d078f5499335d1db02af6
+  revision: 82ee5d979b4278eb7fb035f9b32d8c88ef69dedb
   specs:
     waitress (0.0.1)
       pusher
@@ -37,6 +37,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.8)
     arel (3.0.2)
+    blankslate (2.1.2.4)
     builder (3.0.0)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -74,6 +75,9 @@ GEM
       thor (>= 0.14.6)
     hike (1.2.1)
     i18n (0.6.0)
+    jbuilder (0.4.0)
+      activesupport (>= 3.0.0)
+      blankslate (>= 2.1.2.4)
     journey (1.0.4)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -206,6 +210,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   guard
+  jbuilder
   jquery-rails
   launchy
   mustache

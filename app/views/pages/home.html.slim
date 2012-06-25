@@ -14,13 +14,14 @@ script#no_game_template type="text/html"
 script#new_team_template type="type/html"
   div#new_team_form
     | Test
-    = simple_form_for [:game, @team] do |f|
+    ul#team-errors
+    = simple_form_for @team, url: api_team_path do |f|
       = f.input :name
       = f.submit
 
 script#question_template type="type/html"
   div#question
     | {{body}}
-    /*= simple_form_for [:game, @team] do |f|*/
-    /*  = f.input :name*/
-    /*  = f.submit*/
+    = simple_form_for @response, url: api_question_responses_path do |f|
+      = f.input :body
+      = f.submit

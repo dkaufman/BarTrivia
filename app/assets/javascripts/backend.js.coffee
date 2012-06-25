@@ -1,4 +1,17 @@
+class LSTriviaBackend
+  constructor: ->
+    pusher = new Pusher(pusherKey)
+    channel = pusher.subscribe('ls_trivia')
+    channel.bind 'new_response', (response_id) =>
+      @show_new_response(response_id)
+
+  show_new_response: (response_id) ->
+    $.getJSON "/api/question/responses/#{response_id}", (response) =>
+      $("#responses").append Mustache.to_html($("#response_template").html(), response)
+
 $ ->
+  backend = new LSTriviaBackend
+
   $("#times_up").hide()
   current_question = {}
   $("#next_question").click (event) ->
@@ -16,3 +29,4 @@ $ ->
     $('#questions').append Mustache.to_html($('#show_solution_template').html(), current_question)
     $.getJSON "/api/question/last", (is_last_question) =>
       $('#next_question').show() unless is_last_question
+    # $(".hidden_solu

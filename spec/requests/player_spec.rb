@@ -15,6 +15,7 @@ describe "Player Requests", js: true do
           visit "/"
           fill_in "team_name", with: "Cool Kids"
           click_button "Create Team"
+          wait_until { page.find("#waiting").visible? }
         end
         it "shows the waiting for next question screen" do
           visit "/"
@@ -53,6 +54,7 @@ describe "Player Requests", js: true do
     context "with an invalid team name" do
       let!(:game) { FactoryGirl.create(:active_game) }
       it "returns to the form with an error" do
+        pending "client side validation"
         visit "/"
         fill_in "team_name", with: ""
         click_button "Create Team"

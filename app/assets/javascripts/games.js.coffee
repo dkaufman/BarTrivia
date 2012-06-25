@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 class LSTriviaGame
   constructor: ->
     pusher = new Pusher(pusherKey)
@@ -11,10 +7,26 @@ class LSTriviaGame
     channel.bind 'new_question', @show_question_if_in_game
     channel.bind 'times_up', @show_game_if_team
 
+    $("#new_team").live 'submit', (event) =>
+      event.preventDefault()
+      jqxhr = $.post("api/team", $("#new_team").serialize())
+      jqxhr.done =>
+        @show_waiting()
+      jqxhr.fail =>
+        @new_team()
+
+    $("#new_response").live 'submit', (event) =>
+      event.preventDefault()
+      jqxhr = $.post("api/question/responses", $("#new_response").serialize())
+      jqxhr.done =>
+        @show_waiting()
+      jqxhr.fail =>
+        @show_question()
+
   show_game_if_team: (data) =>
     $.getJSON "/api/team", (team) =>
       if team
-        @show_game()
+        @show_waiting()
       else
         @new_team()
 
@@ -26,7 +38,7 @@ class LSTriviaGame
     $.getJSON "/api/team", (team) =>
       team?
 
-  show_game: (data) ->
+  show_waiting: (data) ->
     $.getJSON "/api/game", (game) ->
       $('#game').empty()
       $('#game').append Mustache.to_html($('#waiting_template').html(), game)
@@ -51,7 +63,7 @@ $ ->
     if game
       $.getJSON "/api/team", (team) ->
         if team
-          screen.show_game()
+          screen.show_waiting()
         else
           screen.new_team()
     else

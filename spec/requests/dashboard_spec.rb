@@ -136,7 +136,6 @@ describe "In-Game View", js: true do
     end
 
     it "reveals the next question" do
-      # pending "Doesn't seem to be making JS Api call"
       page.should have_content game.questions.first.body
     end
 
@@ -148,11 +147,12 @@ describe "In-Game View", js: true do
   describe "clicking 'Times Up'", js: true do
     before(:each) do
       click_link "next_question"
+      sleep(0.1)
       click_link "times_up"
+      sleep(0.1)
     end
 
     it "shows the answer to the question" do
-      pending "Problems with JS"
       page.should have_content game.questions.first.solution
     end
   end

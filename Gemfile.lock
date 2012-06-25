@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dkaufman/Waitress.git
-  revision: 41bd58e38d45827610c54eaab85b19f3f12b4418
+  revision: 0e517cc4c312b10f1b1d078f5499335d1db02af6
   specs:
     waitress (0.0.1)
       pusher
@@ -63,10 +63,10 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (3.4.2)
+    factory_girl (3.5.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (3.4.0)
-      factory_girl (~> 3.4.0)
+    factory_girl_rails (3.5.0)
+      factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
     guard (1.2.1)
@@ -100,8 +100,8 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     mustache (0.99.4)
-    nokogiri (1.5.4)
-    pg (0.13.2)
+    nokogiri (1.5.5)
+    pg (0.14.0)
     polyglot (0.3.3)
     pusher (0.9.4)
       multi_json (~> 1.0)
@@ -164,8 +164,8 @@ GEM
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
-    simplecov (0.6.2)
-      multi_json (~> 1.3)
+    simplecov (0.6.4)
+      multi_json (~> 1.0)
       simplecov-html (~> 0.5.3)
     simplecov-html (0.5.3)
     slim (1.2.2)

@@ -5,6 +5,8 @@ LsTrivia::Application.routes.draw do
     resource :question do
       collection do
         get 'last'
+        get 'current'
+        post 'times_up'
       end
     end
   end

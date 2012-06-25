@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  layout 'dashboard'
+
   def new
     @game = Game.find(params[:pending_game_id])
     @question = Question.new

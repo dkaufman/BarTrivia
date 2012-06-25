@@ -8,4 +8,12 @@ class Api::QuestionsController < ApplicationController
   def last
     respond_with(Question.last?)
   end
+
+  def current
+    respond_with(Question.current)
+  end
+
+  def times_up
+    Question.times_up
+  end
 end

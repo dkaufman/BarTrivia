@@ -14,6 +14,7 @@ $ ->
 
   $("#times_up").hide()
   current_question = {}
+
   $("#next_question").click (event) ->
     event.preventDefault()
     $('#next_question').hide()
@@ -21,6 +22,7 @@ $ ->
     $.getJSON "/api/question", (question) =>
       current_question = question
       $('#questions').append Mustache.to_html($('#ask_question_template').html(), current_question)
+    $("#responses").empty()
 
   $("#times_up").click (event) ->
     event.preventDefault()
@@ -30,3 +32,7 @@ $ ->
     $.getJSON "/api/question/last", (is_last_question) =>
       $('#next_question').show() unless is_last_question
     $(".hidden_solutions").removeClass("hidden")
+
+  $(".mark_as_correct").live 'click', (event) ->
+    $.post "api/question/responses/#{$(this).attr('data')}/correct", (response) =>
+      $(this).hide()

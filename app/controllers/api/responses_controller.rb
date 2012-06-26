@@ -16,4 +16,10 @@ class Api::ResponsesController < ApplicationController
     @response = Response.find(params[:id])
     respond_with(@response)
   end
+
+  def correct
+    response = Response.find(params[:id])
+    response.mark_as_correct
+    head :ok
+  end
 end

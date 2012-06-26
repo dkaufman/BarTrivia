@@ -5,5 +5,6 @@ FactoryGirl.define do
     sequence(:body) { |n| "body_#{n}" }
     sequence(:team_id) { |n| n }
     sequence(:question_id) { |n| n }
+    correct false
   end
 end

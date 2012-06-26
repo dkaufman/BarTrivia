@@ -20,7 +20,8 @@ script#show_solution_template type="text/html"
       | {{solution}}
 
 script#response_template type="text/html"
-  h3
+  span
     | {{team}}
-  h3.hidden.hidden_solutions
+  span.hidden.hidden_solutions
     | {{body}}
+    = link_to "Mark as Correct", "#", data: "{{id}}", class: "btn btn-primary mark_as_correct"

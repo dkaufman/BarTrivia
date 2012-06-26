@@ -31,4 +31,12 @@ describe Response do
       Response.create_for_team_and_question(team, question, params)
     end
   end
+
+  describe ".mark_as_correct" do
+    it "sets the responses correct attribute to true" do
+      response = FactoryGirl.create(:response, correct: false)
+      response.mark_as_correct
+      Response.last.correct.should be_true
+    end
+  end
 end

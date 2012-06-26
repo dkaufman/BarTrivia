@@ -13,8 +13,13 @@ class Response < ActiveRecord::Base
     Waitress.announce_new_response(response)
     return response
   end
-  
+
   def as_json(*params)
-    { body: self.body, team: team.name }
+    { id: self.id, body: self.body, team: team.name }
+  end
+
+  def mark_as_correct
+    self.correct = true
+    save
   end
 end

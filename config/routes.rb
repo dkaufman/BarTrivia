@@ -8,7 +8,11 @@ LsTrivia::Application.routes.draw do
         get 'current'
         post 'times_up'
       end
-      resources :responses
+      resources :responses do
+        member do
+          post 'correct'
+        end
+      end
     end
   end
 

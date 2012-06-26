@@ -15,5 +15,6 @@ class Api::QuestionsController < ApplicationController
 
   def times_up
     Question.times_up
+    head :ok
   end
 end

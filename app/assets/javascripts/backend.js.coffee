@@ -24,9 +24,9 @@ $ ->
 
   $("#times_up").click (event) ->
     event.preventDefault()
-    $.post "/api/question/times_up", "json"
+    $.post "/api/question/times_up"
     $("#times_up").hide()
     $('#questions').append Mustache.to_html($('#show_solution_template').html(), current_question)
     $.getJSON "/api/question/last", (is_last_question) =>
       $('#next_question').show() unless is_last_question
-    # $(".hidden_solu
+    $(".hidden_solutions").removeClass("hidden")

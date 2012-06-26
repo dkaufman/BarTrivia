@@ -1,7 +1,9 @@
 LsTrivia::Application.routes.draw do
   namespace :api do
     resource :game
-    resource :team
+    resource :team do
+      get 'all'
+    end
     resource :question do
       collection do
         get 'last'

@@ -7,6 +7,7 @@
   = question.category
 
 div#questions
+div#teams
 
 script#ask_question_template type="text/html"
   div#ask_question
@@ -25,3 +26,6 @@ script#response_template type="text/html"
   span.hidden.hidden_solutions
     | {{body}}
     = link_to "Mark as Correct", "#", data: "{{id}}", class: "btn btn-primary mark_as_correct"
+
+script#teams_template type="text/html"
+  = render 'teams'

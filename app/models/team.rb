@@ -7,6 +7,18 @@ class Team < ActiveRecord::Base
   validates :name, presence: true
   validates_presence_of :name, :game_id, :token
 
+  def self.for_current_game
+    Game.current.teams
+  end
+
+  def as_json(*params)
+    { name: self.name, points: self.points }
+  end
+
+  def points
+    responses.where(correct: true).count
+  end
+
   protected
 
   def create_token

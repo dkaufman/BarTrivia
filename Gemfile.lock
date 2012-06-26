@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dkaufman/Waitress.git
-  revision: 82ee5d979b4278eb7fb035f9b32d8c88ef69dedb
+  revision: 4ab9f0bcafce20581b5815eedb1cf26f8eedfc77
   specs:
     waitress (0.0.1)
       pusher

@@ -1,4 +1,6 @@
-div#game
+.container
+  .row
+    div#game.span12
 
 script#waiting_template type="text/html"
   div#waiting
@@ -8,8 +10,9 @@ script#waiting_template type="text/html"
       | Waiting for next question
 
 script#no_game_template type="text/html"
-  div#no_game
+  div#no_game.well
     h1 No Current Game
+    = image_tag "sushi.png"
 
 script#new_team_template type="type/html"
   div#new_team_form

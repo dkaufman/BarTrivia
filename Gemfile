@@ -8,7 +8,6 @@ gem 'mustache'
 gem 'pusher'
 gem 'therubyracer'
 gem 'waitress', git: "git://github.com/dkaufman/Waitress.git"
-gem "twitter-bootstrap-rails"
 gem "jbuilder"
 
 group :assets do

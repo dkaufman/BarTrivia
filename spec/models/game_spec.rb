@@ -69,6 +69,7 @@ describe Game do
 
   describe ".finish" do
     let!(:game) { FactoryGirl.create(:active_game) }
+    before(:each) { Waitress.stub(:announce_game_end) }
     it "sets the game's status to finished" do
       game.finish
       game.status.should == "finished"
@@ -82,6 +83,7 @@ describe Game do
 
   describe ".current_game" do
     let!(:game) { FactoryGirl.create(:active_game) }
+    before(:each) { Waitress.stub(:announce_game_end) }
     it "returns the current game object" do
       game.finish
       game2 = FactoryGirl.create(:active_game)

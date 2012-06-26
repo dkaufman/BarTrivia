@@ -25,6 +25,7 @@ describe "Player Requests", js: true do
       end
     end
     context "There is not a game going on" do
+      before(:each) { Waitress.stub(:announce_game_end) }
       it "says that there is no game occuring" do
         game.finish
         visit "/"

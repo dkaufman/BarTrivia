@@ -11,8 +11,8 @@ describe "Teams API" do
     end
     it "responds with the current team" do
       pending "Not tracking cookies"
-      get '/api/team.json'
-      raise response.body.inspect
+      # get '/api/team.json'
+      # raise response.body.inspect
     end
   end
 end

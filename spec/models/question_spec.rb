@@ -21,6 +21,7 @@ describe Question do
   describe "#ask_next" do
     let(:game) { FactoryGirl.create(:active_game_with_questions) }
     before(:each) do
+      Waitress.stub(:announce_new_question)
       first_question = game.questions.first
       first_question.asked = true
       first_question.save
@@ -57,6 +58,7 @@ describe Question do
 
   describe "#current" do
     let!(:game) { FactoryGirl.create(:active_game_with_questions) }
+    before(:each) { Waitress.stub(:announce_new_question) }
     it "returns the current question" do
       current_question = Question.ask_next
       Question.current.should == current_question

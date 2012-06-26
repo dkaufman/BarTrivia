@@ -18,6 +18,7 @@ describe Response do
     let(:question) { FactoryGirl.create(:question) }
     let(:team) { FactoryGirl.create(:team) }
     it "creates a response with the appropriate team id and question id" do
+      Waitress.stub(:announce_new_response)
       Response.create_for_team_and_question(team, question, params)
       response = Response.last
       response.body.should == "Answer to Question"

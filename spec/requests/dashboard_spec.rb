@@ -72,6 +72,7 @@ describe "Dashboard Requests" do
   describe "finishing a game" do
     let!(:game) { FactoryGirl.create(:active_game) }
     before(:each) do 
+      Waitress.stub(:announce_game_end)
       visit "/dashboard"
       click_link "End Game"
     end
@@ -132,6 +133,7 @@ describe "In-Game View", js: true do
 
   describe "clicking 'Ask Next Question'" do
     before(:each) do
+      Waitress.stub(:announce_new_question)
       click_link "next_question"
     end
 
@@ -146,6 +148,8 @@ describe "In-Game View", js: true do
 
   describe "clicking 'Times Up'", js: true do
     before(:each) do
+      Waitress.stub(:announce_new_question)
+      Waitress.stub(:announce_times_up)
       click_link "next_question"
       sleep(0.1)
       click_link "times_up"

@@ -1,5 +1,5 @@
 // First import journal variables
-@import "bootswatch/simplex/variables";
+@import "bootswatch/united/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
@@ -8,7 +8,7 @@
 @import "bootstrap-responsive";
 
 // And finally bootswatch style itself
-@import "bootswatch/simplex/bootswatch";
+@import "bootswatch/united/bootswatch";
 
 // Whatever application styles you have go last
 @import "games";

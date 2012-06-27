@@ -4,27 +4,35 @@
 
 script#waiting_template type="text/html"
   div#waiting
-    h1
-      | {{name}}
-    h2
-      | Waiting for next question
+  .navbar
+    .navbar-inner
+      .container
+        .brand
+          h1 Waiting for Next Question
 
 script#no_game_template type="text/html"
+  .navbar
+    .navbar-inner
+      .container
+        .brand
+          h1 918 F Street Trivia
   div#no_game.well
-    h1 No Current Game
-    = image_tag "sushi.png"
+    h3 You made it! The game hasn't started yet, but sit tight. We'll be getting started soon.
 
 script#new_team_template type="type/html"
-  div#new_team_form
-    | Test
+  div#new_team_form.row
+    .well
+      h3 It's time to pick a team name. Bonus points for cleverness (not really).
     ul#team-errors
     = simple_form_for @team, url: api_team_path do |f|
-      = f.input :name
-      = f.submit
+      = f.input :name, placeholder: "Team Name", label: false
+      = f.submit class: "btn btn-primary btn-large"
 
 script#question_template type="type/html"
-  div#question
-    | {{body}}
+  div#question.row
+    .well
+      h3
+        | {{body}}
     = simple_form_for @response, url: api_question_responses_path do |f|
-      = f.input :body
-      = f.submit
+      = f.input :body, placeholder: "Answer", label: false
+      = f.submit class: "btn btn-primary btn-large"

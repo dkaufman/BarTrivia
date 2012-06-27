@@ -1,38 +1,38 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      = image_tag "lslogo-small.png", class: "logo"
 .container
   .row
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container.logo-div
-          .brand
-            = image_tag "lslogo.png", class: "logo"
-    div#game.span4
+    #game.span12
 
 script#waiting_template type="text/html"
   div#waiting
-  .navbar
-    .navbar-inner
-      .container
-        .brand
-          h1 Waiting for Next Question
+    .well
+      h3.center Waiting for Next Question
 
 script#no_game_template type="text/html"
-  div#no_game.well
-    h3 You made it! The game hasn't started yet, but sit tight. We'll be getting started soon.
+  div#no_game
+    .well
+      h4 You made it! The game hasn't started yet, but sit tight. We'll be getting started soon.
 
 script#new_team_template type="type/html"
-  div#new_team_form.row
-    .well
-      h3 It's time to pick a team name. Bonus points for cleverness (not really).
+  .well
+    h4 It's time to pick a team name. Bonus points for cleverness (not really).
+  div#new_team_form.row.player-form
     ul#team-errors
     = simple_form_for @team, url: api_team_path do |f|
-      = f.input :name, placeholder: "Team Name", label: false
-      = f.submit class: "btn btn-primary btn-large"
+      = f.input :name, placeholder: "Team Name", label: false, input_html: { class: "input-large player-input" }
+      button type="submit" class="btn btn-primary btn-large icon-play"
+          |  Start Playing
 
 script#question_template type="type/html"
   div#question.row
     .well
-      h3
+      h4
         | {{body}}
-    = simple_form_for @response, url: api_question_responses_path do |f|
-      = f.input :body, placeholder: "Answer", label: false
-      = f.submit class: "btn btn-primary btn-large"
+    .player-form
+      = simple_form_for @response, url: api_question_responses_path do |f|
+        = f.input :body, placeholder: "Answer", label: false, input_html: { class: "input-large player-input" }
+        button type="submit" class="btn btn-primary btn-large icon-share-alt"
+            |  Submit Answer

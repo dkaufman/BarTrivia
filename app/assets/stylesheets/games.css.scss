@@ -1,9 +1,14 @@
 // Place all the styles related to the Games controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$berry: #355363;
 
 .hidden {
   visibility: hidden;
+}
+
+.center {
+  text-align: center;
 }
 
 .logo-div {
@@ -12,8 +17,34 @@
 
 .logo {
   padding: 8px;
+  float: right;
+  margin-right: 20px;
 }
 
 .navbar-inner {
   background-color: black !important;
+}
+
+.well {
+  background-color: $berry;
+  border-radius: 8px;
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.player-form {
+  text-align: center;
+}
+
+.player-input {
+  font-size: 180% !important;
+  height: 60px !important;
+  font-weight: bold;
+  padding-left: 10px !important;
+}
+
+.btn-large {
+  margin-top: 15px;
+  height: 40px;
+  font-size: 150%;
 }

@@ -12,7 +12,7 @@ class Team < ActiveRecord::Base
   end
 
   def as_json(*params)
-    { name: self.name, points: self.points }
+    { id: self.id, name: self.name, points: self.points }
   end
 
   def points

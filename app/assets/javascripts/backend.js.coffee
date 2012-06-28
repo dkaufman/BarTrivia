@@ -3,6 +3,11 @@ class LSTriviaBackend
 
   constructor: ->
     $("#times_up").hide()
+    $("#done_grading").hide()
+    $("#end_game").hide()
+    $('#sidebar-header').html Mustache.to_html($('#teams_header').html(), current_question)
+    @update_questions_remaining()
+    LSTriviaBackend.update_teams()
 
     pusher = new Pusher(pusherKey)
     channel = pusher.subscribe('ls_trivia')
@@ -18,20 +23,30 @@ class LSTriviaBackend
       event.preventDefault()
       @times_up()
 
+    $("#done_grading").bind 'click', (event) =>
+      event.preventDefault()
+      @done_grading()
+
     $(".mark_as_correct").live 'click', (event) ->
       event.preventDefault()
       $.post "api/question/responses/#{$(this).attr('data')}/correct", (response) =>
         $(this).hide()
-      LSTriviaBackend.update_teams()
 
   show_new_response: (response_id) ->
     $.getJSON "/api/question/responses/#{response_id}", (response) =>
-      $("#responses").append Mustache.to_html($("#response_template").html(), response)
+      # $("#responses").append Mustache.to_html($("#response_template").html(), response)
+      $("#team_#{response.team_id}_points").append("<span class='check'><i class='icon-ok'></i></span>")
 
   show_next_question: ->
+    $(".question").removeClass("with_solution")
+    $(".check").remove()
     $('#next_question').hide()
+    $("#solution").hide()
     $("#times_up").show()
+    $("#questions").empty()
     $("#responses").empty()
+    @show_teams()
+    @update_questions_remaining()
 
     $.getJSON "/api/question", (question) =>
       current_question = question
@@ -39,12 +54,37 @@ class LSTriviaBackend
 
   times_up: ->
     $("#times_up").hide()
+    $("#done_grading").show()
+    $("#solution").show()
+    $(".question").addClass("with_solution")
     $(".hidden_solutions").removeClass("hidden")
-    $('#questions').append Mustache.to_html($('#show_solution_template').html(), current_question)
+    $('#solution').html Mustache.to_html($('#show_solution_template').html(), current_question)
 
     $.post "/api/question/times_up"
+    @show_responses()
+
+  done_grading: ->
+    $("#done_grading").hide()
+    @show_teams()
     $.getJSON "/api/question/last", (is_last_question) =>
-      $('#next_question').show() unless is_last_question
+      if is_last_question
+        $('#end_game').show()
+      else
+        $('#next_question').show()
+
+  show_responses: ->
+    $('#sidebar-header').html Mustache.to_html($('#responses_header').html(), current_question)
+    $.getJSON "/api/question/responses", (responses) =>
+      $('#teams').empty()
+      $('#teams').append Mustache.to_html($('#responses_template').html(), responses)
+  
+  show_teams: ->
+    $('#sidebar-header').html Mustache.to_html($('#teams_header').html(), current_question)
+    LSTriviaBackend.update_teams()
+
+  update_questions_remaining: ->
+    $.getJSON "/api/question/count", (count) =>
+      $('#questions_remaining').html Mustache.to_html($('#remaining_template').html(), count)
 
   @update_teams: ->
     $.getJSON "/api/team/all", (teams) =>

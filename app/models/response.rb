@@ -14,8 +14,12 @@ class Response < ActiveRecord::Base
     return response
   end
 
+  def self.for_current_question
+    Question.current.responses
+  end
+
   def as_json(*params)
-    { id: self.id, body: self.body, team: team.name }
+    { id: self.id, body: self.body, team: team.name, team_id: team.id}
   end
 
   def mark_as_correct

@@ -26,6 +26,10 @@ class Question < ActiveRecord::Base
     Waitress.announce_times_up
   end
 
+  def self.number_remaining
+    Game.current.questions.select{ |question| !question.already_asked? }.count
+  end
+
   def already_asked?
     asked == true
   end

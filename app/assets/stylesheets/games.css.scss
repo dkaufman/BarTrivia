@@ -32,6 +32,10 @@ $berry: #355363;
   padding-left: 20px;
 }
 
+.main {
+  margin-top: 30px;
+}
+
 .player-form {
   text-align: center;
 }
@@ -47,4 +51,86 @@ $berry: #355363;
   margin-top: 15px;
   height: 40px;
   font-size: 150%;
+}
+
+.title {
+  padding-top: 17px !important;
+  font-family: "arial rounded mt bold" !important;
+  font-size: 350% !important;
+  color: white !important;
+}
+
+.timer {
+  font-size: 110px;
+  text-align: center;
+  padding-top: 70px;
+  padding-bottom: 20px;
+  height: 70px;
+}
+
+.team-points {
+  padding-top: 5px;
+  // float: right;
+  font-size: 330%;
+}
+
+.team-name {
+  font-size: 220%;
+  line-height: 130%;
+}
+
+.team-row {
+  padding-right: 13px;
+  padding-left: 13px;
+}
+
+.team-list {
+  position: absolute;
+  top: 250px;
+  background-color: black;
+}
+
+#sidebar-header {
+  width: 396px
+}
+
+.team-row-separator {
+  padding-right: 13px;
+  padding-left: 13px;
+}
+
+.top-bar {
+  margin-top: 18px;
+}
+
+.top-button {
+  font-size: 40px;
+  padding: 20px;
+  font-weight: bold;
+  margin-left: 60px;
+}
+
+.question {
+  font-size: 450%;
+  line-height: 130%;
+}
+
+.with_solution {
+  font-size: 250%;
+}
+
+.solution {
+  font-size: 450%;
+  line-height: 130%;
+  padding: 20px;
+}
+
+#questions_remaining {
+  margin-bottom: 0px;
+  margin-left: 30px;
+}
+
+.mark_as_correct {
+  font-size: 20px;
+  width: 80px;
 }

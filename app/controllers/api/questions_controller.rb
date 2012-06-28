@@ -17,4 +17,8 @@ class Api::QuestionsController < ApplicationController
     Question.times_up
     head :ok
   end
+
+  def count
+    respond_with(Question.number_remaining)
+  end
 end

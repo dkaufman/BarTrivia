@@ -1,4 +1,6 @@
 class DashboardsController < ApplicationController
+  layout 'dashboard'
+
   def show
     if @current_game = Game.current
       render "games/show"

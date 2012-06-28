@@ -1,6 +1,10 @@
 class Api::ResponsesController < ApplicationController
   respond_to :json
 
+  def index
+    respond_with(Response.for_current_question)
+  end
+
   def create
     game = Game.current
     team = current_team

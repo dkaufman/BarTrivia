@@ -1,26 +1,38 @@
-= @current_game.name
-= link_to "Ask Next Question", "#", id: "next_question", class: "btn btn-secondary"
-= link_to "Time's Up", "#", id: "times_up", class: "btn btn-secondary"
-= link_to "End Game", finish_game_path(@current_game), class: "btn btn-primary"
-
-- @current_game.questions.each do |question|
-  = question.category
-
-div#questions
-div#teams
+.container.main
+  .row
+    .span7
+      .row
+        .well#questions_remaining
+      .row
+        .span7
+          #questions.hero-unit
+            .question
+              | Get ready to have some knowledge dropped on you.
+          #solution
+    .span4.offset1
+      .row
+        = link_to "Next Question", "#", id: "next_question", class: "btn btn-secondary btn-large top-button"
+        = link_to "Time's Up", "#", id: "times_up", class: "btn btn-secondary btn-large top-button"
+        = link_to "Done Grading", "#", id: "done_grading", class: "btn btn-secondary btn-large top-button"
+        = link_to "End Game", finish_game_path(@current_game), id: "end_game", class: "btn btn-primary btn-large top-button"
+        /* .timer
+        /*    | 0:00
+      .row.team-list
+        .well
+          h1.center#sidebar-header Teams
+        #teams
 
 script#ask_question_template type="text/html"
-  div#ask_question
-    h1
-      | {{body}}
+  div#ask_question.question
+    | {{body}}
   div#responses
 
 script#show_solution_template type="text/html"
   div#show_solution
-    h1
+    .solution.well
       | {{solution}}
 
-script#response_template type="text/html"
+/*script#response_template type="text/html"
   span
     | {{team}}
   span.hidden.hidden_solutions
@@ -29,3 +41,16 @@ script#response_template type="text/html"
 
 script#teams_template type="text/html"
   = render 'teams'
+
+script#responses_template type="text/html"
+  = render 'responses'
+
+script#teams_header type="text/html"
+  | Teams
+
+script#responses_header type="text/html"
+  | Responses
+
+script#remaining_template type="text/thml"
+  h1
+    = "#{pluralize('{{.}}', 'Question')} Remaining"

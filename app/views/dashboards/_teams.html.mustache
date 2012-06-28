@@ -1,4 +1,9 @@
 {{#.}}
-  {{name}}
-  {{points}}
+  <div class="row team-row">
+    <div class="span3 team-name">{{name}}</div>
+    <div class="span1 team-points" id="team_{{id}}_points">
+      {{points}}
+    </div>
+  </div>
+  <div class="team-row-separator"><hr></div>
 {{/.}}

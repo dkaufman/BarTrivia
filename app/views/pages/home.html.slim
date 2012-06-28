@@ -18,7 +18,7 @@ script#no_game_template type="text/html"
 
 script#new_team_template type="type/html"
   .well
-    h4 It's time to pick a team name. Bonus points for cleverness (not really).
+    h4 It's time to pick a team name. Remember, 'inappropriate' is subjective.
   div#new_team_form.row.player-form
     ul#team-errors
     = simple_form_for @team, url: api_team_path do |f|

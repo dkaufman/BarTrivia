@@ -11,7 +11,7 @@
 <%= javascript_tag do %>
   window.pusherKey = "<%= j ENV['PUSHER_KEY'] %>";
 <% end %>
-
+<%= render 'shared/navbar' %>
 <%= yield %>
 
 </body>

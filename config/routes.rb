@@ -9,6 +9,7 @@ LsTrivia::Application.routes.draw do
         get 'last'
         get 'current'
         post 'times_up'
+        get 'count'
       end
       resources :responses do
         member do

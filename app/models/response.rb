@@ -18,6 +18,10 @@ class Response < ActiveRecord::Base
     Question.current.responses
   end
 
+  def self.number_correct
+    Question.current.responses.select { |response| response.correct }.count
+  end
+
   def as_json(*params)
     { id: self.id, body: self.body, team: team.name, team_id: team.id}
   end

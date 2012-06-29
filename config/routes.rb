@@ -12,6 +12,9 @@ LsTrivia::Application.routes.draw do
         get 'count'
       end
       resources :responses do
+        collection do
+          get 'number_correct'
+        end
         member do
           post 'correct'
         end

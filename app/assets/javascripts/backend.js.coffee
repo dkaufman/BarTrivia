@@ -30,7 +30,9 @@ class LSTriviaBackend
     $(".mark_as_correct").live 'click', (event) ->
       event.preventDefault()
       $.post "api/question/responses/#{$(this).attr('data')}/correct", (response) =>
-        $(this).hide()
+        $("#response_#{$(this).attr('data')}_row").hide()
+        $("#response_#{$(this).attr('data')}_separator").hide()
+      LSTriviaBackend.show_number_correct()
 
   show_new_response: (response_id) ->
     $.getJSON "/api/question/responses/#{response_id}", (response) =>
@@ -46,11 +48,12 @@ class LSTriviaBackend
     $("#questions").empty()
     $("#responses").empty()
     @show_teams()
-    @update_questions_remaining()
 
     $.getJSON "/api/question", (question) =>
       current_question = question
       $('#questions').append Mustache.to_html($('#ask_question_template').html(), current_question)
+
+    @update_questions_remaining()
 
   times_up: ->
     $("#times_up").hide()
@@ -74,10 +77,14 @@ class LSTriviaBackend
 
   show_responses: ->
     $('#sidebar-header').html Mustache.to_html($('#responses_header').html(), current_question)
+    $('#teams').empty()
+    LSTriviaBackend.show_number_correct()
+    @show_other_responses()
+
+  show_other_responses: ->
     $.getJSON "/api/question/responses", (responses) =>
-      $('#teams').empty()
-      $('#teams').append Mustache.to_html($('#responses_template').html(), responses)
-  
+      $('#responses').html Mustache.to_html($('#responses_template').html(), responses)
+
   show_teams: ->
     $('#sidebar-header').html Mustache.to_html($('#teams_header').html(), current_question)
     LSTriviaBackend.update_teams()
@@ -87,9 +94,16 @@ class LSTriviaBackend
       $('#questions_remaining').html Mustache.to_html($('#remaining_template').html(), count)
 
   @update_teams: ->
+    $("#number_correct").empty()
+    $("#responses").empty()
     $.getJSON "/api/team/all", (teams) =>
       $('#teams').empty()
       $('#teams').append Mustache.to_html($('#teams_template').html(), teams)
+
+  @show_number_correct: ->
+    $.getJSON "/api/question/responses/number_correct", (count) =>
+      $('#number_correct').html Mustache.to_html($('#number_correct_template').html(), count)
+
 
 $ ->
   backend = new LSTriviaBackend

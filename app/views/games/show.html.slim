@@ -18,14 +18,15 @@
         /* .timer
         /*    | 0:00
       .row.team-list
-        .well
+        .well#sidebar-header-well
           h1.center#sidebar-header Teams
         #teams
+        #number_correct
+        #responses
 
 script#ask_question_template type="text/html"
   div#ask_question.question
     | {{body}}
-  div#responses
 
 script#show_solution_template type="text/html"
   div#show_solution
@@ -51,6 +52,15 @@ script#teams_header type="text/html"
 script#responses_header type="text/html"
   | Responses
 
-script#remaining_template type="text/thml"
+script#remaining_template type="text/html"
   h1
     = "#{pluralize('{{.}}', 'Question')} Remaining"
+
+script#number_correct_template type="text/html"
+  .row.team-row
+    .span3.team-name
+      | Number Correct
+    .span1.team-points
+      | {{.}}
+  .team-row-separator
+    hr

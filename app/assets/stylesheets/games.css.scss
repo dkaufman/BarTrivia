@@ -91,7 +91,12 @@ $berry: #355363;
 }
 
 #sidebar-header {
-  width: 396px
+  width: 396px;
+}
+
+#sidebar-header-well {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .team-row-separator {
@@ -125,9 +130,16 @@ $berry: #355363;
   padding: 20px;
 }
 
+#questions {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
 #questions_remaining {
   margin-bottom: 0px;
   margin-left: 30px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .mark_as_correct {

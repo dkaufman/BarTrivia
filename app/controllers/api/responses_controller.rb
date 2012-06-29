@@ -26,4 +26,8 @@ class Api::ResponsesController < ApplicationController
     response.mark_as_correct
     head :ok
   end
+
+  def number_correct
+    respond_with(Response.number_correct)
+  end
 end

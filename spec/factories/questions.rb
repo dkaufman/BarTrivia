@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :question do
-    sequence(:category) { |n| "category_#{n}" }
     sequence(:body) { |n| "body_#{n}" }
     sequence(:solution) { |n| "solution_#{n}" }
     sequence(:game_id) { |n| n }

@@ -1,9 +1,8 @@
 class Question < ActiveRecord::Base
-  attr_accessible :body, :solution, :category
+  attr_accessible :body, :solution
   belongs_to :game
   has_many :responses
 
-  validates :category, presence: true
   validates :body, presence: true
   validates :solution, presence: true
 

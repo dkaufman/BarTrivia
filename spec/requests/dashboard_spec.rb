@@ -17,8 +17,8 @@ describe "Dashboard Requests" do
       let!(:game) { FactoryGirl.create(:active_game) }
       before(:each) { visit "/dashboard" }
 
-      it "shows the current games name" do
-        page.should have_content game.name
+      it "show the game screen" do
+        page.should have_content "Questions Remaining"
       end
 
       it "does not show past games" do
@@ -93,7 +93,6 @@ describe "Dashboard Requests" do
 
     context "with valid information" do
       before(:each) do
-        fill_in "Category", with: "Names"
         fill_in "Question", with: "What is your name?"
         fill_in "Solution", with: "Dan"
       end
@@ -111,7 +110,6 @@ describe "Dashboard Requests" do
 
     context "with invalid information" do
       it "raises an error on the form" do
-        fill_in "Category", with: ""
         fill_in "Question", with: ""
         fill_in "Solution", with: ""
         click_button "Create Question"
@@ -124,12 +122,6 @@ end
 describe "In-Game View", js: true do
   let!(:game) { FactoryGirl.create(:active_game_with_questions) }
   before(:each) { visit "/dashboard" }
-
-  it "shows a list of all of the game's question's categories" do
-    game.questions.each do |question|
-      page.should have_content question.category
-    end
-  end
 
   describe "clicking 'Ask Next Question'" do
     before(:each) do

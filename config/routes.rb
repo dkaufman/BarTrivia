@@ -1,5 +1,6 @@
 LsTrivia::Application.routes.draw do
   namespace :api do
+    resources :pending_games
     resource :game
     resource :team do
       get 'all'

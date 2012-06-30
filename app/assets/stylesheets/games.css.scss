@@ -146,3 +146,73 @@ $berry: #355363;
   font-size: 20px;
   width: 80px;
 }
+
+.add-new-game-button{
+  margin-left: 20px;
+  margin-top: -8px;
+}
+
+.add-new-game-input{
+  height: 20px !important;
+  font-size: 18px !important;
+}
+
+#new_game {
+  height: 30px;
+  margin-bottom: 0px;
+}
+
+#games {
+  margin-top: 10px;
+}
+
+.left_game_row {
+  padding-left: 15px;
+}
+
+.game_row {
+  background-color: black;
+  margin-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  margin-left: 0px;
+}
+
+.option-button {
+  margin-right: 10px;
+}
+
+.game-side-header {
+  font-size: 18px;
+}
+
+.show-solutions {
+  margin-left: 250px;
+  margin-top: 0px;
+}
+
+.question-list {
+  margin-top: 10px;
+}
+
+.question-row {
+  background-color: black;
+  margin-bottom: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  margin-left: 0px;
+  padding-left: 10px;
+}
+
+.add-new-question {
+  margin-top: 62px;
+  background-color: black;
+  margin-bottom: 15px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  margin-left: 0px;
+  padding-left: 40px;
+}

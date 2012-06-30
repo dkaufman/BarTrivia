@@ -1,0 +1,15 @@
+<div class="add-new-question">
+  <form accept-charset="UTF-8" action="/pending_games/{{.}}/questions" class="simple_form new_question" id="new_question" method="post" novalidate="novalidate">
+    <div style="margin:0;padding:0;display:inline">
+      <input name="utf8" type="hidden" value="✓">
+      <input name="authenticity_token" type="hidden" value="V9A3v/EmqIzD4Wmyo2+iffEwzu3TQJ/SH/S/I/sMGAQ=">
+    </div>
+    <div class="input string required">
+      <input class="input-xlarge add-new-game-input" id="question_body" name="question[body]" size="50" type="text" placeholder="Question">
+    </div>
+    <div class="input string required">
+      <input class="input-xlarge add-new-game-input" id="question_solution" name="question[solution]" size="50" type="text" placeholder="Solution">
+    </div>
+    <input name="commit" type="submit" value="Create Question" class="btn btn-large btn-primary">
+  </form>
+</div>

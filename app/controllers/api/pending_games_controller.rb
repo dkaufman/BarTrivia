@@ -1,8 +1,9 @@
 class Api::PendingGamesController < ApplicationController
   respond_to :json
 
-  # def index
-  #   respond_with(Game.pending)
-  # end
+  def show
+    @game = Game.find(params[:id])
+    render json: @game.to_json(include: :questions)
+  end
 end
 

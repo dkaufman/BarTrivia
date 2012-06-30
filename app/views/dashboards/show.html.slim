@@ -1,29 +1,36 @@
-div#new_game
-  = simple_form_for @new_game, :url => game_path do |f|
-    = f.input :name
-    = f.submit
+.container.main
+  .row
+    .span6
+      .row
+        .span6
+          #new_game.well
+            = form_for @new_game, :url => game_path, class: "well form-inline" do |f|
+              = f.text_field :name, class: "input-xlarge add-new-game-input", placeholder: "Game Description"
+              = f.submit "Create New Game", class: "btn add-new-game-button"
+      #games
+        - @pending_games.each do |game|
+          .row.game_row
+            .span3.left_game_row
+              .row
+                .span3
+                  h3
+                    = game.name
+              .row
+                .span3
+                  = link_to "Start Game", start_pending_game_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_start"
+            .span2 id="#{dom_id(game)}_question_count"
+              .row
+                .span3
+                  h3
+                    = pluralize(game.question_count, "Question")
+              .row
+                .span3
+                  = link_to "Add Question", new_pending_game_question_path(game), class: "btn btn-primary option-button add-question", id: "#{dom_id(game)}_add_question", data: game.id
+                  = link_to "Show Questions", "#", class: "btn btn-primary option-button show-questions", data: game.id
+    .span5.offset1
+      #question-list
 
-table
-  th Pending Games
-  - @pending_games.each do |game|
-    tr
-      td
-        = game.name
-      td
-        = game.status
-      td id="#{dom_id(game)}_question_count"
-        = game.question_count
-      td
-        = link_to "Start Game", start_pending_game_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_start"
-      td
-        = link_to "Add Question", new_pending_game_question_path(game), class: "btn btn-primary", id: "#{dom_id(game)}_add_question"
-table
-  th Past Games
-  - @past_games.each do |game|
-    tr
-      td
-        = game.name
-      td
-        = game.status
-      td id="game_#{dom_id(game)}_question_count"
-        = game.question_count
+script#question_list_template type="text/html"
+  = render 'questions_list'
+script#new_question_template type="text/html"
+  = render 'new_question'

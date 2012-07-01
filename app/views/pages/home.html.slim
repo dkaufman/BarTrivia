@@ -2,6 +2,8 @@
   .navbar-inner
     .container
       = image_tag "lslogo-small.png", class: "logo"
+      .brand
+        h3 Trivia @ 918 F
 .container
   .row
     #game.span12
@@ -10,11 +12,14 @@ script#waiting_template type="text/html"
   div#waiting
     .well
       h3.center Waiting for Next Question
+    = image_tag(Photo.random)
 
 script#no_game_template type="text/html"
   div#no_game
     .well
       h4 You made it! The game hasn't started yet, but sit tight. We'll be getting started soon.
+    = image_tag(Photo.random)
+    h4 Welcome to 918 F Street. Experience the best food, drinks, classes, and events in DC, all in one place.
 
 script#new_team_template type="type/html"
   .well

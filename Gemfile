@@ -9,7 +9,8 @@ gem 'pusher'
 gem 'therubyracer'
 gem 'waitress', git: "git://github.com/dkaufman/Waitress.git"
 gem 'twitter-bootstrap-rails'
-gem "jbuilder"
+gem 'jbuilder'
+gem 'fog'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -16,4 +16,3 @@
 //= require mustache
 //= require pusher.min
 //= require games
-//= require raphael.min

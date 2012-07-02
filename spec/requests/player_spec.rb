@@ -10,18 +10,6 @@ describe "Player Requests", js: true do
           page.should have_selector "#new_team_form"
         end
       end
-      # context "the player has already created a team name" do
-        # before(:each) do
-          # visit "/"
-          # fill_in "team_name", with: "Cool Kids"
-          # click_button "Start Playing"
-          # wait_until { page.find("#waiting").visible? }
-        # end
-        # it "shows the waiting for next question screen" do
-          # visit "/"
-          # page.should have_selector "#waiting"
-        # end
-      # end
     end
     context "There is not a game going on" do
       before(:each) { Waitress.stub(:announce_game_end) }
@@ -32,34 +20,4 @@ describe "Player Requests", js: true do
       end
     end
   end
-
-  describe 'starting a game while the user is on the root path' do
-    it "shows the waiting for next question screen" do
-      pending "How to test pusher?"
-      page.should have_selector "#waiting"
-    end
-  end
-
-  # describe 'creating a team name' do
-  #   let!(:game) { FactoryGirl.create(:active_game) }
-  #   context "with a valid team name" do
-  #     it "shows the waiting for next question screen" do
-  #       visit "/"
-  #       fill_in "team_name", with: "Cool Kids"
-  #       click_button "Start Playing"
-  #       page.should have_selector "#waiting"
-  #     end
-  #   end
-  #   context "with an invalid team name" do
-  #     let!(:game) { FactoryGirl.create(:active_game) }
-  #     it "returns to the form with an error" do
-  #       pending "client side validation"
-  #       visit "/"
-  #       fill_in "team_name", with: ""
-  #       click_button "Create Team"
-  #       page.should have_selector "#new_team_form"
-  #       page.should have_content "can't be blank"
-  #     end
-  #   end
-  # end
 end

@@ -33,13 +33,6 @@ script#show_solution_template type="text/html"
     .solution.well
       | {{solution}}
 
-/*script#response_template type="text/html"
-  span
-    | {{team}}
-  span.hidden.hidden_solutions
-    | {{body}}
-    = link_to "Mark as Correct", "#", data: "{{id}}", class: "btn btn-primary mark_as_correct"
-
 script#teams_template type="text/html"
   = render 'teams'
 

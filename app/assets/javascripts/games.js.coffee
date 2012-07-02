@@ -8,6 +8,7 @@ class LSTriviaGame
     channel.bind 'times_up', @show_game_if_team
 
     $("#new_team").live 'submit', (event) =>
+      $("new_team_submit").prop('disabled', true)
       event.preventDefault()
       jqxhr = $.post("api/team", $("#new_team").serialize())
       jqxhr.done =>
@@ -16,6 +17,7 @@ class LSTriviaGame
         @new_team()
 
     $("#new_response").live 'submit', (event) =>
+      $("new_response_submit").prop('disabled', true)
       event.preventDefault()
       jqxhr = $.post("api/question/responses", $("#new_response").serialize())
       jqxhr.done =>

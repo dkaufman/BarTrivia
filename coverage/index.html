@@ -23,7 +23,7 @@
       <img src="./assets/0.5.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2012-07-01T23:17:48-04:00">2012-07-01T23:17:48-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2012-07-02T10:25:21-04:00">2012-07-02T10:25:21-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -34,7 +34,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.03
+         3.06
        </span>
     </span> hits/line)
   </h2>
@@ -246,7 +246,7 @@
         <td>24</td>
         <td>24</td>
         <td>0</td>
-        <td>18.3</td>
+        <td>20.2</td>
       </tr>
       
       <tr>
@@ -2669,26 +2669,26 @@
           <code class="ruby">  def self.ask_next</code>
         </li>
       
-        <li class="covered" data-hits="89" data-linenumber="10">
-          <span class="hits">89</span>
+        <li class="covered" data-hits="99" data-linenumber="10">
+          <span class="hits">99</span>
           
           <code class="ruby">    question = Game.current.questions.select{ |question| !question.already_asked? }.first</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="11">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="9" data-linenumber="11">
+          <span class="hits">9</span>
           
           <code class="ruby">    question.mark_as_asked</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="12">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="9" data-linenumber="12">
+          <span class="hits">9</span>
           
           <code class="ruby">    Waitress.announce_new_question</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="13">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="9" data-linenumber="13">
+          <span class="hits">9</span>
           
           <code class="ruby">    return question</code>
         </li>
@@ -2783,8 +2783,8 @@
           <code class="ruby">  def self.number_remaining</code>
         </li>
       
-        <li class="covered" data-hits="56" data-linenumber="29">
-          <span class="hits">56</span>
+        <li class="covered" data-hits="66" data-linenumber="29">
+          <span class="hits">66</span>
           
           <code class="ruby">    Game.current.questions.select{ |question| !question.already_asked? }.count</code>
         </li>
@@ -2807,8 +2807,8 @@
           <code class="ruby">  def already_asked?</code>
         </li>
       
-        <li class="covered" data-hits="182" data-linenumber="33">
-          <span class="hits">182</span>
+        <li class="covered" data-hits="202" data-linenumber="33">
+          <span class="hits">202</span>
           
           <code class="ruby">    asked == true</code>
         </li>
@@ -2831,14 +2831,14 @@
           <code class="ruby">  def mark_as_asked</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="37">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="10" data-linenumber="37">
+          <span class="hits">10</span>
           
           <code class="ruby">    self.asked = true</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="38">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="10" data-linenumber="38">
+          <span class="hits">10</span>
           
           <code class="ruby">    save</code>
         </li>

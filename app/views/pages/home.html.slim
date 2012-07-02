@@ -14,6 +14,7 @@ script#waiting_template type="text/html"
       h3.center Waiting for Next Question
     = image_tag(Photo.random)
     h4 Welcome to 918 F Street. Experience the best food, drinks, classes, and events in DC, all in one place.
+    br
 
 script#no_game_template type="text/html"
   div#no_game
@@ -21,15 +22,15 @@ script#no_game_template type="text/html"
       h4 You made it! The game hasn't started yet, but sit tight. We'll be getting started soon.
     = image_tag(Photo.random)
     h4 Welcome to 918 F Street. Experience the best food, drinks, classes, and events in DC, all in one place.
+    br
 
 script#new_team_template type="type/html"
   .well
     h4 It's time to pick a team name. Remember, 'inappropriate' is subjective.
   div#new_team_form.row.player-form
-    ul#team-errors
     = simple_form_for @team, url: api_team_path do |f|
-      = f.input :name, placeholder: "Team Name", label: false, input_html: { class: "input-large player-input" }
-      button type="submit" class="btn btn-primary btn-large icon-play"
+      = f.input :name, placeholder: "Team Name", label: false, input_html: { class: "input-large player-input", maxlength: 80}
+      button type="submit" class="btn btn-primary btn-large icon-play" id="new_team_submit"
           |  Start Playing
 
 script#question_template type="type/html"
@@ -39,6 +40,6 @@ script#question_template type="type/html"
         | {{body}}
     .player-form
       = simple_form_for @response, url: api_question_responses_path do |f|
-        = f.input :body, placeholder: "Answer", label: false, input_html: { class: "input-large player-input" }
-        button type="submit" class="btn btn-primary btn-large icon-share-alt"
+        = f.input :body, placeholder: "Answer", label: false, input_html: { class: "input-large player-input", maxlength: 80 }
+        button type="submit" class="btn btn-primary btn-large icon-share-alt" id="new_team_submit"
             |  Submit Answer

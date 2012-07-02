@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe "Dashboard Requests" do
+  before(:each) { DashboardsController.any_instance.stub(:authenticate) }
   describe "visiting the /dashboard" do
     context "when there is no active game" do
-      let!(:past_games) { FactoryGirl.create_list(:past_game, 10) }
+      let!(:pending_games) { FactoryGirl.create_list(:pending_game, 10) }
       before(:each) { visit "/dashboard" }
-      it "lists all past games" do
-        past_games.each do |game|
+      it "lists all pending games" do
+        pending_games.each do |game|
           page.should have_content game.name
         end
       end
@@ -31,8 +32,8 @@ describe "Dashboard Requests" do
     before(:each) { visit "/dashboard" }
     context "with a valid name" do
       it "creates a new game" do
-        fill_in :game_name, with: "Quick Game"
-        click_button "Create Game"
+        fill_in 'game_name', with: "Quick Game"
+        click_button "Create New Game"
         game = Game.last
         game.name.should == "Quick Game"
         game.status.should == "pending"
@@ -41,15 +42,8 @@ describe "Dashboard Requests" do
 
     context "without a valid name" do
       it "does not create a game" do
-        fill_in :game_name, with: "abc"
-        expect { click_button "Create Game" }.to change { Game.count }.by(0)
-      end
-
-      it "displays an error on the form" do
-        fill_in 'Name', with: "abc"
-        click_button "Create Game"
-        page.should have_selector("#new_game")
-        page.should have_content("too short")
+        fill_in 'game_name', with: "abc"
+        expect { click_button "Create New Game" }.to change { Game.count }.by(0)
       end
     end
   end
@@ -121,7 +115,10 @@ end
 
 describe "In-Game View", js: true do
   let!(:game) { FactoryGirl.create(:active_game_with_questions) }
-  before(:each) { visit "/dashboard" }
+  before(:each) do
+    DashboardsController.any_instance.stub(:authenticate)
+    visit "/dashboard"
+  end
 
   describe "clicking 'Ask Next Question'" do
     before(:each) do

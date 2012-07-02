@@ -10,19 +10,21 @@
 
 script#waiting_template type="text/html"
   div#waiting
-    .well
+    .well.mobile-instructions
       h3.center Waiting for Next Question
-    = image_tag(Photo.random)
-    h4 Welcome to 918 F Street. Experience the best food, drinks, classes, and events in DC, all in one place.
-    br
+    .random-image
+      = image_tag(Photo.random)
+      .motto
+        h5 918 F Street. Experience the best food, drinks, and events in DC, all in one place.
 
 script#no_game_template type="text/html"
   div#no_game
-    .well
-      h4 You made it! The game hasn't started yet, but sit tight. We'll be getting started soon.
-    = image_tag(Photo.random)
-    h4 Welcome to 918 F Street. Experience the best food, drinks, classes, and events in DC, all in one place.
-    br
+    .well.mobile-instructions
+      h5 You made it! The game hasn't started yet, but sit tight. We'll be getting started soon.
+    .random-image
+      = image_tag(Photo.random)
+      .motto
+        h5 918 F Street. Experience the best food, drinks, and events in DC, all in one place.
 
 script#new_team_template type="type/html"
   .well

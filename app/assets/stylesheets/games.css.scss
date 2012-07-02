@@ -63,7 +63,7 @@ $berry: #355363;
 .timer {
   font-size: 110px;
   text-align: center;
-  padding-top: 70px;
+  padding-top: 10px;
   padding-bottom: 20px;
   height: 70px;
 }
@@ -217,4 +217,25 @@ $berry: #355363;
   border-radius: 8px;
   margin-left: 0px;
   padding-left: 40px;
+}
+
+.red {
+  color: red;
+}
+
+.mobile-instructions {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.random-image {
+  width: 90%;
+  margin: auto;
+}
+
+.motto {
+  margin-top: 5px;
+  background-color: black !important;
+  padding-left: 8px;
+  border-radius: 8px;
 }

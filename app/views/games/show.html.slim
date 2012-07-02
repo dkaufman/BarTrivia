@@ -12,11 +12,10 @@
     .span4.offset1
       .row
         = link_to "Next Question", "#", id: "next_question", class: "btn btn-secondary btn-large top-button"
-        = link_to "Time's Up", "#", id: "times_up", class: "btn btn-secondary btn-large top-button"
+        = link_to "Time's Up", "#", id: "times_up", class: "btn btn-secondary btn-large top-button hidden"
         = link_to "Done Grading", "#", id: "done_grading", class: "btn btn-secondary btn-large top-button"
         = link_to "End Game", finish_game_path(@current_game), id: "end_game", class: "btn btn-primary btn-large top-button"
-        /* .timer
-        /*    | 0:00
+        .timer#timer
       .row.team-list
         .well#sidebar-header-well
           h1.center#sidebar-header Teams

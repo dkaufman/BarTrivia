@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require mustache
 //= require pusher.min
+//= require raphael.min
 //= require admin
 //= require backend
+//= require timer
 //= require bootstrap-collapse

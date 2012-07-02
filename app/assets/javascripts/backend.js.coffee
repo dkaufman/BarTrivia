@@ -18,6 +18,8 @@ class LSTriviaBackend
     $("#next_question").bind 'click', (event) =>
       event.preventDefault()
       @show_next_question()
+      timer = new Timer
+      timer.start()
 
     $("#times_up").bind 'click', (event) =>
       event.preventDefault()

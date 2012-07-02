@@ -7,7 +7,7 @@ class Timer
   every: (ms, cb) =>
     @interval = setInterval cb, ms
 
-  start: (seconds = 60) =>
+  start: (seconds = 10) =>
     @seconds_left = seconds
     $("#timer").html(
       "<a href='#' class='btn btn-inverse btn-large top-button' id='times_up'>
@@ -25,7 +25,7 @@ class Timer
         <div class='end-early'>(Click to End Early)</div>
       </a>")
     if @seconds_left <= 0
-      @stop_timer()
+      $("#times_up").click()
 
   stop_timer: ->
     clearInterval(@interval)

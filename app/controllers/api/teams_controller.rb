@@ -2,7 +2,7 @@ class Api::TeamsController < ApplicationController
   respond_to :json
 
   def all
-    respond_with(Team.for_current_game)
+    respond_with(Team.for_current_game.sort_by { |team| team.points }.reverse)
   end
 
   def show

@@ -9,7 +9,6 @@ class Timer
 
   start: (seconds = 60) =>
     @seconds_left = seconds
-    # $("#timer").html(@time_for(@seconds_left))
     $("#timer").html(
       "<a href='#' class='btn btn-inverse btn-large top-button' id='times_up'>
         <div class='time-left'>#{@time_for(@seconds_left)}</div>
@@ -20,13 +19,11 @@ class Timer
 
   tick: =>
     @seconds_left = @seconds_left - 1
-    console.log(@seconds_left)
     $("#timer").html(
       "<a href='#' class='btn btn-inverse btn-large top-button' id='times_up'>
         <div class='time-left'>#{@time_for(@seconds_left)}</div>
         <div class='end-early'>(Click to End Early)</div>
       </a>")
-    # $("#timer").html("<div>#{@time_for(@seconds_left)}</div>")
     if @seconds_left <= 0
       @stop_timer()
 

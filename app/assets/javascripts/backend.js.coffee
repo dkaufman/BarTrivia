@@ -64,7 +64,11 @@ class LSTriviaBackend
     $('#solution').html Mustache.to_html($('#show_solution_template').html(), current_question)
 
     $.post "/api/question/times_up"
+    @auto_grade_responses()
     @show_responses()
+
+  auto_grade_responses: ->
+    $.post "/api/question/responses/auto_grade"
 
   done_grading: ->
     $("#done_grading").hide()

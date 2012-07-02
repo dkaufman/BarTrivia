@@ -15,6 +15,7 @@ LsTrivia::Application.routes.draw do
       resources :responses do
         collection do
           get 'number_correct'
+          post 'auto_grade'
         end
         member do
           post 'correct'

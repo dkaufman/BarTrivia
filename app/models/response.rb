@@ -15,11 +15,17 @@ class Response < ActiveRecord::Base
   end
 
   def self.for_current_question
-    Question.current.responses
+    Question.current.responses.select { |response| !response.correct }
   end
 
   def self.number_correct
     Question.current.responses.select { |response| response.correct }.count
+  end
+
+  def self.auto_grade
+    Question.current.responses.each do |response|
+      response.mark_as_correct if response.can_auto_confirm?
+    end
   end
 
   def as_json(*params)
@@ -29,5 +35,9 @@ class Response < ActiveRecord::Base
   def mark_as_correct
     self.correct = true
     save
+  end
+
+  def can_auto_confirm?
+    Question.current.solution.casecmp(body) == 0
   end
 end

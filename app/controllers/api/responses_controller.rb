@@ -30,4 +30,9 @@ class Api::ResponsesController < ApplicationController
   def number_correct
     respond_with(Response.number_correct)
   end
+
+  def auto_grade
+    Response.auto_grade
+    head :ok
+  end
 end

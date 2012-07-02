@@ -21,7 +21,7 @@ class LSTriviaBackend
       timer = new Timer
       timer.start()
 
-    $("#times_up").bind 'click', (event) =>
+    $("#times_up").live 'click', (event) =>
       event.preventDefault()
       @times_up()
 
@@ -38,7 +38,6 @@ class LSTriviaBackend
 
   show_new_response: (response_id) ->
     $.getJSON "/api/question/responses/#{response_id}", (response) =>
-      # $("#responses").append Mustache.to_html($("#response_template").html(), response)
       $("#team_#{response.team_id}_points").append("<span class='check'><i class='icon-ok'></i></span>")
 
   show_next_question: ->

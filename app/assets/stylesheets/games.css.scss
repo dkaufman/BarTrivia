@@ -220,7 +220,7 @@ $berry: #355363;
 }
 
 .red {
-  color: red;
+  color: #820000;
 }
 
 .mobile-instructions {
@@ -238,4 +238,21 @@ $berry: #355363;
   background-color: black !important;
   padding-left: 8px;
   border-radius: 8px;
+}
+
+#times_up {
+  width: 268px !important;
+  height: 60px;
+  padding: 20px;
+  padding-top: 5px;
+}
+
+.time-left {
+  margin-top: -5px;
+  font-size: 60px !important;
+}
+
+.end-early {
+  margin-top: -5px;
+  font-size: 10px;
 }

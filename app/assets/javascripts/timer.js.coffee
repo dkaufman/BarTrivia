@@ -7,7 +7,7 @@ class Timer
   every: (ms, cb) =>
     @interval = setInterval cb, ms
 
-  start: (seconds = 10) =>
+  start: (seconds = 60) =>
     @seconds_left = seconds
     $("#timer").html(
       "<a href='#' class='btn btn-inverse btn-large top-button' id='times_up'>

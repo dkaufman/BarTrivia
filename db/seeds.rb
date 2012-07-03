@@ -1,7 +1,7 @@
 Question.destroy_all
 Game.destroy_all
 
-5.times do
+3.times do
   pending_game = FactoryGirl.create(:pending_game, name: "#{Date.today + rand(30)} Speakeasy Trivia")
   FactoryGirl.create(:question, game_id: pending_game.id,
                      body: "The first 'Electric Pig' was developed in 1927. What do we call this common household convenience invention nowadays?",
@@ -33,4 +33,17 @@ Game.destroy_all
   FactoryGirl.create(:question, game_id: pending_game.id,
                      body: "What heavyweight boxer of the 1960s and 1970s was known as 'The Bayonne Bleeder'?",
                      solution: "Chuck Wepner")
+end
+
+2.times do
+  pending_game = FactoryGirl.create(:pending_game, name: "#{Date.today + rand(30)} Speakeasy Trivia")
+  FactoryGirl.create(:question, game_id: pending_game.id,
+                     body: "First Question?",
+                     solution: "First Answer")
+  FactoryGirl.create(:question, game_id: pending_game.id,
+                     body: "Second Question?",
+                     solution: "Second Answer")
+  FactoryGirl.create(:question, game_id: pending_game.id,
+                     body: "Third Question?",
+                     solution: "Third Answer")
 end

@@ -28,7 +28,7 @@ script#no_game_template type="text/html"
 
 script#new_team_template type="type/html"
   .well
-    h4 It's time to pick a team name. Remember, 'inappropriate' is subjective.
+    h4 It's time to pick a team name. Let's keep it clean this time, folks.
   div#new_team_form.row.player-form
     = simple_form_for @team, url: api_team_path do |f|
       = f.input :name, placeholder: "Team Name", label: false, input_html: { class: "input-large player-input", maxlength: 80}

@@ -1,5 +1,11 @@
-== BarTrivia
+Modern bar trivia. Stop writing your answers on scraps of paper, then pushing your way through the crowd to turn it in. Instead, submit your answers on your phone and scores will automatically be tallied.
 
-Modern bar trivia. Play on your phone instead of paper, the quizmaster runs the show on the big screen.
+Visit '/' on a mobile device to play the game.
+Visit '/dashboard' and display it on the big screen to be the quizmaster (basic auth required).
 
-Visit '/' to play, visit '/dashboard' to be the quizmaster (basic auth required).
+To run tests:
+
+1) Clone Repo
+2) Bundle
+   - If you get an error with installing capybara webkit, you may need to brew install qt
+3) rspec

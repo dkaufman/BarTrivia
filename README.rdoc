@@ -5,8 +5,8 @@ Visit '/dashboard' and display it on the big screen to be the quizmaster (basic 
 
 To run tests:
 
-*1) Clone Repo
+1) Clone Repo
 
-*2) Bundle
+2) Bundle
    - If you get an error with installing capybara webkit, you may need to brew install qt
-*3) rspec
+3) rspec
